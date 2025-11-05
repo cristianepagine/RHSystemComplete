@@ -1,0 +1,13 @@
+package com.rhsystem.model;
+
+public enum TipoAusencia {
+    ATESTADO_MEDICO,
+    FALTA_JUSTIFICADA,
+    FALTA_INJUSTIFICADA,
+    LICENCA_MATERNIDADE,
+    LICENCA_PATERNIDADE,
+    LICENCA_CASAMENTO,
+    LICENCA_LUTO,
+    AFASTAMENTO_INSS,
+    OUTROS
+}
