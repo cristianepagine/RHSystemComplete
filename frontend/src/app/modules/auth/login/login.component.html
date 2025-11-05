@@ -1,0 +1,28 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>RH System</mat-card-title>
+      <mat-card-subtitle>Sistema de Recursos Humanos</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="form-field-full-width">
+          <mat-label>Usuário</mat-label>
+          <input matInput formControlName="username" required>
+        </mat-form-field>
+
+        <mat-form-field class="form-field-full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="password" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit"
+                [disabled]="!loginForm.valid || loading"
+                class="form-field-full-width">
+          {{ loading ? 'Entrando...' : 'Entrar' }}
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

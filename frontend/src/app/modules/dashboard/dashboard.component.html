@@ -1,0 +1,87 @@
+<mat-toolbar color="primary">
+  <span>RH System - Dashboard</span>
+  <span class="spacer"></span>
+  <span>{{ currentUser()?.username }}</span>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <h1>Bem-vindo ao Sistema de RH</h1>
+
+  <div class="dashboard-grid" *ngIf="dashboardData">
+    <mat-card class="dashboard-card" (click)="navigateTo('/funcionarios')">
+      <mat-card-header>
+        <mat-icon color="primary">people</mat-icon>
+        <mat-card-title>Funcionários</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-value">{{ dashboardData.totalFuncionarios }}</div>
+        <div class="stat-label">Total de Funcionários</div>
+        <div class="stat-detail">
+          Ativos: {{ dashboardData.funcionariosAtivos }} |
+          Inativos: {{ dashboardData.funcionariosInativos }}
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card" (click)="navigateTo('/ferias')">
+      <mat-card-header>
+        <mat-icon color="accent">beach_access</mat-icon>
+        <mat-card-title>Férias</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-value">{{ dashboardData.feriasPendentes }}</div>
+        <div class="stat-label">Solicitações Pendentes</div>
+        <div class="stat-detail">
+          Aprovadas: {{ dashboardData.feriasAprovadas }}
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card" (click)="navigateTo('/ponto')">
+      <mat-card-header>
+        <mat-icon color="warn">access_time</mat-icon>
+        <mat-card-title>Ponto</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-value">{{ dashboardData.registrosPontoHoje }}</div>
+        <div class="stat-label">Registros Hoje</div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-icon>business</mat-icon>
+        <mat-card-title>Organização</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="stat-detail">
+          Departamentos: {{ dashboardData.totalDepartamentos }}
+        </div>
+        <div class="stat-detail">
+          Cargos: {{ dashboardData.totalCargos }}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="quick-actions">
+    <h2>Ações Rápidas</h2>
+    <div class="actions-grid">
+      <button mat-raised-button color="primary" (click)="navigateTo('/funcionarios')">
+        <mat-icon>person_add</mat-icon>
+        Cadastrar Funcionário
+      </button>
+      <button mat-raised-button color="accent" (click)="navigateTo('/ponto')">
+        <mat-icon>schedule</mat-icon>
+        Registrar Ponto
+      </button>
+      <button mat-raised-button (click)="navigateTo('/ferias')">
+        <mat-icon>event</mat-icon>
+        Solicitar Férias
+      </button>
+    </div>
+  </div>
+</div>
